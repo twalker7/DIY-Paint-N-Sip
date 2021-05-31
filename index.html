@@ -4,39 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DIY Paint-n-Sip</title>
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
 </head>
 
 <body>
-    <header> 
-        <div>
-            <h1> DIY Paint n Sip</h1>
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <h1>DIY Paint-n-Sip</h1>
         </div>
-    </header>
-
-    <div class ="container" id= "liquor-jumbotron"> 
-            <select id="liquor-list">
-                <option value="vodka">Vodka</option>
-            </select>
-
-            <button id="new-cocktail" type="button"></button>
-            <div id="cocktail-recipe"> </div>
     </div>
 
-    
-
-    <div class="container" id= "painting-jumbotron">
-        <button id="new-art" type="button"></button>
-
-        <div id="painting">
-            <img>
+    <div class="grid-x grid-margin-x grid-padding-x">
+        <div class ="cell medium-5 large-5" id= "liquor-jumbotron"> 
+            <div id="UI-drink-buttons" class="grid-x grid-margin-x grid-padding-x">    
+                <div class="cell medium-6 large-6">
+                    <select id="liquor-list">
+                        <option value="vodka">Vodka</option>
+                        <option value="whiskey">Whiskey</option>
+                        <option value="tequila">Tequila</option>
+                        <option value="rum">Rum</option>
+                        <option value="gin">Gin</option>
+                    </select>
+                </div>
+                <div class="cell medium-6 large-6">
+                    <button class="button" id="cocktail-button">Drink Me!</button>
+                </div>
+            </div>
+            <div id="cocktail-recipe" class="grid-x">
+                <div class="cell">Drink Name: <span id="random-cocktail-name"></span></div>
+                <div class="cell medium-4 large-4">Ingredients List</div>
+                <div class="cell medium-8 large-8">Recipe Steps</div>
+            </div> 
         </div>
-        
-    </div>
-    
 
-    <footer> Thank you </footer>
+        <div class="cell medium-auto large-auto" id= "painting-jumbotron">
+            <div class="grid-x grid-margin-x grid-padding-x">
+                <button class="button" id="new-art">Inspire Me!</button>
+            </div>
+            <div id="painting" class="grid-x">fill with art</div>
+        </div>
+    </div>
+
+    <div class="grid-x grid-padding-x"> 
+        <h2>Thank you</h2> 
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </body>
 </html>
