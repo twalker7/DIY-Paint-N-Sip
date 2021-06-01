@@ -21,7 +21,10 @@
         <div class ="cell medium-5 large-5" id= "liquor-jumbotron"> 
             <div id="UI-drink-buttons" class="grid-x grid-margin-x grid-padding-x">    
                 <div class="cell medium-6 large-6">
-                    <select id="liquor-list">
+                    <!--form element added below to relate the button to the select list -- innerText for label is recommended once stylable -->
+                    
+                    <label for="liquor-list"></label>
+                    <select name="liquor-list" id="liquor-list" form="cocktail-submit">
                         <option value="vodka">Vodka</option>
                         <option value="whiskey">Whiskey</option>
                         <option value="tequila">Tequila</option>
@@ -29,9 +32,9 @@
                         <option value="gin">Gin</option>
                     </select>
                 </div>
-                <div class="cell medium-6 large-6" id="">
-                    <button class="button" id="cocktail-button">Drink Me!</button>
-                </div>
+                <form class="cell medium-6 large-6" id="cocktail-submit"> <!-- changed div element into form element to relate button inside to select list above-->
+                    <button class="button" id="cocktail-button" type="submit">Drink Me!</button>
+                </form>
             </div>
             <!-- cell-block-y will allow recipe box scrolling -->
             <div id="cocktail-recipe" class="grid-x grid-margin-x">
@@ -55,8 +58,9 @@
     </div>
 
     <footer class="grid-x grid-padding-x align-center"> 
-        <h3>Thank you </h3> 
+        <h3>Thank you &copy HTeamL </h3> 
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 </html>
