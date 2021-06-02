@@ -11,6 +11,12 @@ var getDrink = function(){
         console.log(data.drinks[4].strInstructions);
         var randIndex = Math.floor(Math.random() * data.drinks.length); 
         alert("request test - return instructions: \n" + data.drinks[randIndex].idDrink);
+        var randomDrinkID = data.drinks[randIndex].idDrink;
+        fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + randomDrinkID )
+        .then(response=>response.json())
+        .then(function(data) {
+            alert("your drink name:" + data.drinks[0].strDrink);
+        });
     });
     
 
