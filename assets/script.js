@@ -2,12 +2,15 @@
 
 var getDrink = function(){
     
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + $("#cocktail-submit").val() )
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + $("#liquor-list").val() )
     .then(response=>response.json())
     .then(function(data){
+
+       
         console.log(data);
         console.log(data.drinks[4].strInstructions);
-        alert("request test - return instructions: \n" + data.drinks[4].strInstructions);
+        var randIndex = Math.floor(Math.random() * data.drinks.length); 
+        alert("request test - return instructions: \n" + data.drinks[randIndex].idDrink);
     });
     
 
