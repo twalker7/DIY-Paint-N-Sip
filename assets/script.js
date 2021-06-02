@@ -7,7 +7,7 @@ var getDrink = function(){
     .then(function(data){
         console.log(data);
         console.log(data.drinks[4].strInstructions);
-        alert("request test - return ingredients: \n" + data.drinks[4].strInstructions);
+        alert("request test - return instructions: \n" + data.drinks[4].strInstructions);
     });
     
 
