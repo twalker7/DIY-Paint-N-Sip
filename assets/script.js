@@ -24,12 +24,21 @@ var getDrink = function(){
 }
 
 var getArtwork = function(){
-    fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=1")
+    fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects")
     .then(response=>response.json())
     .then(function(obj){
         console.log(obj);
         console.log(obj.objectIDs[3]);
-        
+        var artrandIndex = Math.floor(Math.random() * obj.objectIDs.length);
+        alert("request test - return art ID:" + obj.objectIDs[artrandIndex]);
+        var randomArtID = obj.objectIDs[artrandIndex];
+        fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/" + randomArtID )
+        .then(response=>response.json())
+        .then(function(obj) {
+            alert("your art name:" + obj.objectName);
+
+        });
+
     });
 }
 
@@ -41,10 +50,13 @@ $("#cocktail-button").click(function(event){
 
 //to call the function containing a fetch request to art museum API 
 $("#new-art-button").click(function(){
+    event.preventDefault();
     alert("new art button pressed");
     getArtwork();
 });
 
-
+function clearRecipe() {
+    
+}
 
 
