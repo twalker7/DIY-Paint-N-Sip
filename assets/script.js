@@ -15,7 +15,8 @@ var getDrink = function(){
         fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + randomDrinkID )
         .then(response=>response.json())
         .then(function(data) {
-            alert("your drink name:" + data.drinks[0].strDrink);
+            alert("your drink name:" + data.drinks[0].strDrink + 
+            "\ningredient: " + data.drinks[0].strMeasure1 + "- " + data.drinks[0].strIngredient1);
         });
     });
     
