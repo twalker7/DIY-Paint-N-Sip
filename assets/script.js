@@ -44,6 +44,7 @@ var getArtwork = function(){
 
 $("#cocktail-button").click(function(event){
     event.preventDefault();
+    clearRecipe();
     getDrink();
    //alert("cocktail gbutton pressed");
 });
@@ -51,12 +52,18 @@ $("#cocktail-button").click(function(event){
 //to call the function containing a fetch request to art museum API 
 $("#new-art-button").click(function(){
     event.preventDefault();
-    alert("new art button pressed");
+    clearArt();
     getArtwork();
 });
 
 function clearRecipe() {
-    
+    $("#random-cocktail-name").empty();
+    $("#ingredients-list").empty();
+    $("#recipe-steps").empty();
+}
+
+function clearArt() {
+    $("#painting").empty();
 }
 
 
