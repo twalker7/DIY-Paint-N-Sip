@@ -16,7 +16,10 @@ var getDrink = function(){
         .then(response=>response.json())
         .then(function(data) {
             alert("your drink name:" + data.drinks[0].strDrink + 
-            "\ningredient: " + data.drinks[0].strMeasure1 + "- " + data.drinks[0].strIngredient1);
+            "\ningredient: " + data.drinks[0].strMeasure1 + " - " + data.drinks[0].strIngredient1);
+            $("#random-cocktail-name").append(data.drinks[0].strDrink);
+            $("#ingredients-list").append(data.drinks[0].strMeasure1 + " - " + data.drinks[0].strIngredient1);
+            $("#recipe-steps").append(data.drinks[0].strInstructions);
         });
     });
     
@@ -36,7 +39,8 @@ var getArtwork = function(){
         .then(response=>response.json())
         .then(function(obj) {
             alert("your art name:" + obj.objectName);
-
+            var artImage = obj.primaryImage;
+            $("#painting").append('<img src="' + artImage +'"></img>')
         });
 
     });
