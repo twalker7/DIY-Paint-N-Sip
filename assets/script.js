@@ -1,6 +1,6 @@
 // functions containing fetch requests -- not currently working properly; just for testing purposes
 
-var getDrink = function(){
+function getDrink(){
     
     fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + $("#liquor-list").val() )
     .then(response=>response.json())
@@ -21,11 +21,9 @@ var getDrink = function(){
             $("#recipe-steps").append(data.drinks[0].strInstructions);
         });
     });
-    
-
 }
 
-var getArtwork = function(){
+function getArtwork(){
     fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects")
     .then(response=>response.json())
     .then(function(obj){
@@ -41,9 +39,13 @@ var getArtwork = function(){
             //alert("your art name:" + obj.objectName);
             var artImage = obj.primaryImage;
             console.log("Image link: ", artImage);
-            $("#painting").append('<img class="artwork-image" src="' + artImage +'"></img>')
+            if (artImage === "") {
+                getArtwork();
+            } else {
+               $("#painting").append('<img class="artwork-image" src="' + artImage +'"></img>'); 
+            }
+            
         });
-
     });
 }
 
