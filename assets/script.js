@@ -5,13 +5,12 @@ var getDrink = function(){
     fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + $("#liquor-list").val() )
     .then(response=>response.json())
     .then(function(data){
-
-       
         console.log(data);
-        console.log(data.drinks[4].strInstructions);
         var randIndex = Math.floor(Math.random() * data.drinks.length); 
+        console.log("random index", randIndex)
         //alert("request test - return instructions: \n" + data.drinks[randIndex].idDrink);
         var randomDrinkID = data.drinks[randIndex].idDrink;
+        console.log("random drink id", randomDrinkID)
         fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + randomDrinkID )
         .then(response=>response.json())
         .then(function(data) {
@@ -34,12 +33,14 @@ var getArtwork = function(){
         console.log(obj.objectIDs[3]);
         var artrandIndex = Math.floor(Math.random() * obj.objectIDs.length);
         //alert("request test - return art ID:" + obj.objectIDs[artrandIndex]);
+        console.log("ID number: " , obj.objectIDs[artrandIndex]);
         var randomArtID = obj.objectIDs[artrandIndex];
         fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/" + randomArtID )
         .then(response=>response.json())
         .then(function(obj) {
             //alert("your art name:" + obj.objectName);
             var artImage = obj.primaryImage;
+            console.log("Image link: ", artImage);
             $("#painting").append('<img class="artwork-image" src="' + artImage +'"></img>')
         });
 
