@@ -65,10 +65,10 @@ body{
 
 
 @media screen and (max-width: 640px){
-    img{
+    /*img{
         height: 200px;
         width: 200px;
-    }
+    }*/
     #application-box{
         height: 600px;
     }
@@ -76,7 +76,7 @@ body{
         margin-top: 70px;
     }
     #painting-jumbotron{
-        margin-top: 50px;
+        /*margin-top: 50px; */
     }
 
     
