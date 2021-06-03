@@ -19,10 +19,27 @@ function getDrink(){
             clearRecipe();
             $("#drink-name-title").append("Drink Name:");
             $("#random-cocktail-name").append(data.drinks[0].strDrink);
-            $("#ingredients-title").append("Ingredients: </br>");
-            $("#ingredients-list").append(data.drinks[0].strMeasure1 + " - " + data.drinks[0].strIngredient1);
             $("#recipe-title").append("Instructions: </br>");
             $("#recipe-steps").append(data.drinks[0].strInstructions);
+            $("#ingredients-title").append("Ingredients: </br>");
+            for (var i = 1; i < 16; i++) {
+                console.log(data.drinks[0])
+                var meas1 = ("data.drinks[0].strMeasure" + i);
+                var measurement = eval(meas1);
+                console.log(meas1);
+                console.log(measurement);
+                var ing1 = ("data.drinks[0].strIngredient" + i);
+                var ingredient = eval(ing1);
+                console.log(ing1);
+                console.log(ingredient);
+                if (measurement == null || measurement == " " || ingredient == null || ingredient == " ") {
+                    
+                } else {
+                $("#ingredients-list").append(measurement + " - " + ingredient + "</br>");    
+                }
+            }
+            
+            
         });
     });
 }
