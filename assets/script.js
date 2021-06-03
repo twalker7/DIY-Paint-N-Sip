@@ -1,7 +1,7 @@
 // functions containing fetch requests -- not currently working properly; just for testing purposes
 
 function getDrink(){
-    $("#random-cocktail-name").append('<img class="artwork-image" src="./assets/images/standby.png"></img>');
+    $("#random-cocktail-name").append('<iframe src="https://giphy.com/embed/d90nFNtgGnvjiGBN4Z" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/drunkhistory-comedy-central-drunk-history-d90nFNtgGnvjiGBN4Z"></a></p>');
     fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + $("#liquor-list").val() )
     .then(response=>response.json())
     .then(function(data){
