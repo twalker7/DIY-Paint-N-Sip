@@ -40,7 +40,7 @@ var getArtwork = function(){
         .then(function(obj) {
             //alert("your art name:" + obj.objectName);
             var artImage = obj.primaryImage;
-            $("#painting").append('<img src="' + artImage +'"></img>')
+            $("#painting").append('<img class="artwork-image" src="' + artImage +'"></img>')
         });
 
     });
