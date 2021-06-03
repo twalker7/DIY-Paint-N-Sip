@@ -10,6 +10,11 @@ body{
     
 }
 
+.titles {
+    color: #f45257;
+    text-decoration: underline;
+}
+
 .tophead {
     display: flex;
     justify-content: center;

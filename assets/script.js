@@ -17,9 +17,12 @@ function getDrink(){
             //alert("your drink name:" + data.drinks[0].strDrink + 
             //"\ningredient: " + data.drinks[0].strMeasure1 + " - " + data.drinks[0].strIngredient1);
             clearRecipe();
-            $("#random-cocktail-name").append("Drink Name: " + data.drinks[0].strDrink);
-            $("#ingredients-list").append("Ingredients:\n" + data.drinks[0].strMeasure1 + " - " + data.drinks[0].strIngredient1);
-            $("#recipe-steps").append("Instructions:\n" + data.drinks[0].strInstructions);
+            $("#drink-name-title").append("Drink Name:");
+            $("#random-cocktail-name").append(data.drinks[0].strDrink);
+            $("#ingredients-title").append("Ingredients: </br>");
+            $("#ingredients-list").append(data.drinks[0].strMeasure1 + " - " + data.drinks[0].strIngredient1);
+            $("#recipe-title").append("Instructions: </br>");
+            $("#recipe-steps").append(data.drinks[0].strInstructions);
         });
     });
 }
@@ -70,6 +73,9 @@ function clearRecipe() {
     $("#random-cocktail-name").empty();
     $("#ingredients-list").empty();
     $("#recipe-steps").empty();
+    $("#drink-name-title").empty();
+    $("#ingredients-title").empty();
+    $("#recipe-title").empty();
 }
 
 function clearArt() {
