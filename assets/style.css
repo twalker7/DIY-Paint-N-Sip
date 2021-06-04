@@ -37,17 +37,14 @@ body{
     display: flex;
     color: #fcea85;
     background-color: #f45257;
-    height: 120px;
+    height: 80px;
     justify-content: center;
+    align-items: center;
 }
-
-/* goes into .bottomfoot */
-/* height: 120px; */
 
 .bottomfoot h3{
     color: #fcea85;
     background-color: #f45257;
-    margin-top: 40px
 }
 
 #cocktail-button, #new-art-button {
@@ -69,7 +66,7 @@ body{
 }
 
 .artwork-image {
-    height: 200px;
+    height: 400px;
 }
 
 @import 'foundation';
@@ -81,20 +78,19 @@ body{
         width: 200px;
     }*/
     #application-box{
-        height: 800px;
+        height: 1000px;
     }
     #recipe-steps{
-<<<<<<< HEAD
         margin-top: 20px;
+    }
+    .mediacenter {
+        justify-content: center ;
+        text-align: center;
     }
    /* #painting-jumbotron{
         margin-top: 50px; 
     }*/
 
-=======
-        margin-top: 70px;
-    }
->>>>>>> f345b635d17c260da09a7e06f387b9e943431121
     
 }
 
