@@ -32,11 +32,17 @@ body{
     display: flex;
     color: #fcea85;
     background-color: #f45257;
+    height: 120px;
+    justify-content: center;
 }
+
+/* goes into .bottomfoot */
+/* height: 120px; */
 
 .bottomfoot h3{
     color: #fcea85;
     background-color: #f45257;
+    margin-top: 40px
 }
 
 #cocktail-button, #new-art-button {
@@ -75,10 +81,6 @@ body{
     #recipe-steps{
         margin-top: 70px;
     }
-    #painting-jumbotron{
-        /*margin-top: 50px; */
-    }
-
     
 }
 
