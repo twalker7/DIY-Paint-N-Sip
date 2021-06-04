@@ -16,7 +16,6 @@ body{
     padding: 5px;
     background-color: #fcea85;
     color: #f45257;
-    margin-bottom: 20px;
 }
 
 .tophead h1 {
@@ -31,7 +30,6 @@ body{
 
 .bottomfoot {
     display: flex;
-    margin-top: 20px;
     color: #fcea85;
     background-color: #f45257;
 }
@@ -55,10 +53,8 @@ body{
 
 #application-box{
     height: 500px;
-    width: 80%;
     border: black solid 2px;
     border-radius:5px;
-    align-self: center;
 }
 
 .artwork-image {
