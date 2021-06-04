@@ -1,3 +1,30 @@
+//Identify previously selected recipes and artwork from local storage
+$(document).ready(function(){
+    //Pull last cocktail selected from local storage
+    var localStorageDrink = JSON.parse(localStorage.getItem("drink-id"));
+    if (localStorageDrink !== null) {
+        clearRecipe();
+        //Fill drink box with "stand-by" gif for user's entertainment
+        $("#random-cocktail-name").append('<iframe src="https://giphy.com/embed/d90nFNtgGnvjiGBN4Z" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/drunkhistory-comedy-central-drunk-history-d90nFNtgGnvjiGBN4Z"></a></p>');
+        var oldDrink = localStorageDrink;
+        console.log("Last searched cocktail ID: " , oldDrink);
+        //Run function to display drink from old drink ID
+        getDrinkInfo(oldDrink);
+    }
+    //Pull last artwork selected from local storage
+    var localStorageArt = JSON.parse(localStorage.getItem("art-id"));
+    if (localStorageArt !== null) {
+        clearArt();
+        //Fill art box with "stand-by" gif for user's entertainment
+        $("#painting").append('<iframe src="https://giphy.com/embed/LzCREPXRTqtdC" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/spongebob-LzCREPXRTqtdC"></a></p>');
+        var oldArt = localStorageArt;
+        console.log("Last searched artwork ID: " , oldArt);
+        //Run function to display art from old art ID
+        getArtInfo(oldArt);
+    }
+    
+});
+
 //Response to "Drink Me" button click
 $("#cocktail-button").click(function(event){
     event.preventDefault();
@@ -47,46 +74,51 @@ function getDrink(){
             //console.log("random index", randIndex)
         //Use random number to find drink ID 
         var randomDrinkID = data.drinks[randIndex].idDrink;
-        console.log("random drink id", randomDrinkID)
-        //Use drink ID to fetch url for all information about selected cocktail
-        fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + randomDrinkID )
-        .then(response=>response.json())
-        .then(function(data) {
-            //Remove "stand-by" gif with clear function
-            clearRecipe();
-            //Send drink name from API to HTML
-            $("#drink-name-title").append("Drink Name:");
-            $("#random-cocktail-name").append(data.drinks[0].strDrink);
-            //Send drink instructions from API to HTML
-            $("#recipe-title").append("Instructions: </br>");
-            $("#recipe-steps").append(data.drinks[0].strInstructions);
-            //Send drink ingredients from API to HTML
-            $("#ingredients-title").append("Ingredients: </br>");
-            //For loop to check every ingredient listed in API
-            for (var i = 1; i < 16; i++) {
-                //For Testing:
-                    //console.log(data.drinks[0])
-                //Make a string that includes this loop's i value
-                var meas1 = ("data.drinks[0].strMeasure" + i);
-                var ing1 = ("data.drinks[0].strIngredient" + i);
-                //Convert string to script
-                var measurement = eval(meas1);
-                var ingredient = eval(ing1);
-                //For Testing:
-                    //console.log(meas1);
-                    //console.log(ing1);
-                    //console.log(measurement);
-                    //console.log(ingredient);
-                //If statement to only display ingredients with content in API
-                if (measurement == null || measurement == " " || ingredient == null || ingredient == " ") {
-                    
-                } else {
-                $("#ingredients-list").append(measurement + " - " + ingredient + "</br>");    
-                }
+        console.log("Random Drink ID: ", randomDrinkID)
+        localStorage.setItem("drink-id", JSON.stringify(randomDrinkID));
+        getDrinkInfo(randomDrinkID);
+    });
+}
+
+function getDrinkInfo(drinkID) {
+    //Use drink ID to fetch url for all information about selected cocktail
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID )
+    .then(response=>response.json())
+    .then(function(data) {
+        //Remove "stand-by" gif with clear function
+        clearRecipe();
+        //Send drink name from API to HTML
+        $("#drink-name-title").append("Drink Name:");
+        $("#random-cocktail-name").append(data.drinks[0].strDrink);
+        //Send drink instructions from API to HTML
+        $("#recipe-title").append("Instructions: </br>");
+        $("#recipe-steps").append(data.drinks[0].strInstructions);
+        //Send drink ingredients from API to HTML
+        $("#ingredients-title").append("Ingredients: </br>");
+        //For loop to check every ingredient listed in API
+        for (var i = 1; i < 16; i++) {
+            //For Testing:
+                //console.log(data.drinks[0])
+            //Make a string that includes this loop's i value
+            var meas1 = ("data.drinks[0].strMeasure" + i);
+            var ing1 = ("data.drinks[0].strIngredient" + i);
+            //Convert string to script
+            var measurement = eval(meas1);
+            var ingredient = eval(ing1);
+            //For Testing:
+                //console.log(meas1);
+                //console.log(ing1);
+                //console.log(measurement);
+                //console.log(ingredient);
+            //If statement to only display ingredients with content in API
+            if (measurement == null || measurement == " " || ingredient == null || ingredient == " ") {
+                
+            } else {
+            $("#ingredients-list").append(measurement + " - " + ingredient + "</br>");    
             }
-            
-            
-        });
+        }
+        
+        
     });
 }
 
@@ -105,27 +137,30 @@ function getArtwork(){
         console.log("ID number: " , obj.objectIDs[artrandIndex]);
         //Use random number to select artwork ID
         var randomArtID = obj.objectIDs[artrandIndex];
-        //Use artwork ID to fetch url for all information about selected art
-        fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/" + randomArtID )
-        .then(response=>response.json())
-        .then(function(obj) {
-            //Find image link
-            var artImage = obj.primaryImage;
-            //For Testing:
-                //console.log("Image link: ", artImage);
-            //If statement to move ignore artwork with no image
-            if (artImage === "") {
-                clearArt();
-                getArtwork(); 
-            } else {
-                clearArt();
-                $("#painting").append('<img class="artwork-image" src="' + artImage +'"></img>'); 
-            }
-            
-        });
+        localStorage.setItem("art-id", JSON.stringify(randomArtID));
+        getArtInfo(randomArtID);
     });
 }
 
-
+function getArtInfo(artID) {
+    //Use artwork ID to fetch url for all information about selected art
+    fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/" + artID )
+    .then(response=>response.json())
+    .then(function(obj) {
+        //Find image link
+        var artImage = obj.primaryImage;
+        //For Testing:
+            //console.log("Image link: ", artImage);
+        //If statement to move ignore artwork with no image
+        if (artImage === "") {
+            clearArt();
+            getArtwork(); 
+        } else {
+            clearArt();
+            $("#painting").append('<img class="artwork-image" src="' + artImage +'"></img>'); 
+        }
+        
+    });
+}
 
 
