@@ -69,14 +69,14 @@ Please see below a few future developments that will come soon:
 - Source artwork from other museum collections
 - Add user specified drink preferences (ie. non-alcoholic)
 - Add food recipe options
-- Return list of materials needed to \complete artwork
-- Replace artwork with combination of images \for inspiration
+- Return list of materials needed to execute artwork
+- Replace artwork with a combination of inspirational images
 - Add random color palette
-- Play music \in display \for ambience (select genre)
+- Play music to create ambience (select genre)
 - Display image of finished cocktail
 - Add scrollable boxes to contain recipe list to avoid text overflow
 - Add social media link to share new drink and art with friends
-- Include non-alcoholic options \for non-drinkers 
+- Include non-alcoholic options to welcome non-drinkers 
 ```
 If you have any suggestions for improvements, please do not hesitate to contact the authors!
 
