@@ -54,7 +54,7 @@ For those of you interested in the behind the scenes details, the console will p
 
 ![Console](assets/images/read-me-img-07.png)
 
-If there is any other information you would like dislayed in the console, please contact the authors!
+If there is any other information you would like displayed in the console, please contact the authors!
 
 When you refresh your page, your latest cocktail and artwork selections are presented. This is due to the local storage updating and remembering your latest selection:
 
